@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Global Adventures Blog - My Top 3 Cities</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #264653;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: #2a9d8f;
+            padding: 12px;
+            position: sticky;
+            top: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #f4d35e;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #264653;
+        }
+
+        figure {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        figcaption {
+            margin-top: 8px;
+            font-style: italic;
+            color: #666;
+        }
+
+        article {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2a9d8f;
+            background-color: #f8f5f0;
+        }
+
+        a {
+            color: #26736c;
+        }
+
+        button {
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #21867b;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="checkbox"] {
+            width: auto;
+        }
+
+        .gallery-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-list li {
+            background-color: #f8f5f0;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .gallery-list img {
+            width: 100%;
+        }
+
+        iframe {
+            max-width: 100%;
+        }
+
+        footer {
+            background-color: #264653;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                gap: 12px;
+            }
+
+            main {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HOMEPAGE HEADER -->
+    <header id="home">
+        <h1>🌍 Journeys of Friendship: Exploring the World Together</h1>
+
+        <p>
+            Welcome to Global Adventures Blog! Join us as we explore
+            amazing cities, discover new cultures, taste delicious food,
+            and create unforgettable memories around the world.
+        </p>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav aria-label="Main Navigation">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#cities">Cities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#subscribe">Subscribe</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <!-- HOMEPAGE / FEATURED CITIES -->
+        <section id="cities">
+            <h2>✈️ Our Top 3 Favorite Cities</h2>
+
+            <p>
+                Discover three beautiful cities that have captured
+                our hearts through their attractions, food, and culture.
+            </p>
+
+            <figure>
+                <img src="images/paris.jpg"
+                     alt="Beautiful view of Paris and Eiffel Tower"
+                     width="500">
+                <figcaption>🇫🇷 Paris – The City of Love</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/tokyo.jpg"
+                     alt="Tokyo city skyline at night"
+                     width="500">
+                <figcaption>🇯🇵 Tokyo – The City of Modern Wonders</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/rome.jpg"
+                     alt="Historic buildings in Rome"
+                     width="500">
+                <figcaption>🇮🇹 Rome – The Eternal City</figcaption>
+            </figure>
+        </section>
+
+        <!-- PARIS DETAIL PAGE -->
+        <section id="paris">
+            <h2>🇫🇷 Discover Paris, France</h2>
+
+            <p>
+                Paris is one of the most beautiful cities in the world.
+                It is famous for its romantic atmosphere, historic
+                buildings, art, fashion, and wonderful cafes.
+            </p>
+
+            <h3>Famous Landmarks 🗼</h3>
+
+            <figure>
+                <img src="images/eiffel-tower.jpg"
+                     alt="Eiffel Tower in Paris"
+                     width="450">
+                <figcaption>
+                    The Eiffel Tower is one of the most famous
+                    landmarks in the world.
+                </figcaption>
+            </figure>
+
+            <p>
+                Other popular attractions include the Louvre Museum,
+                Notre-Dame Cathedral, and the Arc de Triomphe.
+            </p>
+
+            <h3>Delicious French Food 🥐</h3>
+
+            <p>
+                Paris is famous for croissants, baguettes, macarons,
+                and many delicious French dishes. Exploring local
+                bakeries and cafes would be one of my favorite activities.
+            </p>
+
+            <h3>Culture and Experiences 🎨</h3>
+
+            <p>
+                Paris is known for its art, fashion, music, museums,
+                and historical architecture. Walking along the
+                Seine River is also a wonderful experience.
+            </p>
+
+            <h3>My Personal Reflection ❤️</h3>
+
+            <p>
+                Paris is a dream destination because it offers
+                a combination of beauty, history, and culture.
+                I would love to explore the city with my friends
+                and capture beautiful memories together.
+            </p>
+        </section>
+
+        <!-- TOKYO DETAIL PAGE -->
+        <section id="tokyo">
+            <h2>🇯🇵 Discover Tokyo, Japan</h2>
+
+            <p>
+                Tokyo is an exciting city where modern technology
+                meets traditional Japanese culture. Its bright
+                streets, beautiful temples, and unique atmosphere
+                make it an amazing destination.
+            </p>
+
+            <h3>Famous Landmarks 🏯</h3>
+
+            <figure>
+                <img src="images/tokyo-tower.jpg"
+                     alt="Tokyo Tower in Japan"
+                     width="450">
+                <figcaption>
+                    Tokyo Tower is one of the city's most
+                    recognizable landmarks.
+                </figcaption>
+            </figure>
+
+            <p>
+                Other attractions include Senso-ji Temple,
+                Shibuya Crossing, and Tokyo Skytree.
+            </p>
+
+            <h3>Japanese Food 🍣</h3>
+
+            <p>
+                Tokyo offers delicious food such as sushi,
+                ramen, tempura, and takoyaki. There are many
+                restaurants and food markets to explore.
+            </p>
+
+            <h3>Culture and Experiences 🌸</h3>
+
+            <p>
+                Visitors can experience traditional Japanese
+                festivals, visit temples, enjoy cherry blossom
+                season, and explore modern shopping districts.
+            </p>
+
+            <h3>My Personal Reflection ❤️</h3>
+
+            <p>
+                Tokyo is a dream destination for me because
+                of its unique culture and modern lifestyle.
+                I would love to visit its famous places,
+                try authentic Japanese food, and explore
+                the city with my friends.
+            </p>
+        </section>
+
+        <!-- ROME DETAIL PAGE -->
+        <section id="rome">
+            <h2>🇮🇹 Discover Rome, Italy</h2>
+
+            <p>
+                Rome is a historic city filled with ancient
+                buildings, beautiful architecture, and fascinating
+                stories. It is a perfect destination for anyone
+                who loves history and culture.
+            </p>
+
+            <h3>Famous Landmarks 🏛️</h3>
+
+            <figure>
+                <img src="images/colosseum.jpg"
+                     alt="The Colosseum in Rome"
+                     width="450">
+                <figcaption>
+                    The Colosseum is a famous ancient
+                    Roman amphitheater.
+                </figcaption>
+            </figure>
+
+            <p>
+                Other famous attractions include the Trevi Fountain,
+                the Pantheon, and the Roman Forum.
+            </p>
+
+            <h3>Italian Food 🍕</h3>
+
+            <p>
+                Rome is famous for pizza, pasta, gelato,
+                and other traditional Italian dishes.
+                Trying authentic Italian food would be
+                one of the best parts of visiting the city.
+            </p>
+
+            <h3>Culture and Experiences 🎭</h3>
+
+            <p>
+                Rome has a rich cultural heritage, with ancient
+                monuments, art galleries, museums, and beautiful
+                public squares.
+            </p>
+
+            <h3>My Personal Reflection ❤️</h3>
+
+            <p>
+                I would love to visit Rome because of its
+                historical atmosphere and beautiful architecture.
+                Exploring ancient landmarks and enjoying Italian
+                food with friends would create unforgettable memories.
+            </p>
+        </section>
+
+        <!-- GALLERY SECTION -->
+        <section id="gallery">
+            <h2>📸 Travel Gallery</h2>
+
+            <p>
+                Explore beautiful moments and unforgettable memories
+                from our favorite cities around the world.
+            </p>
+
+            <ul class="gallery-list">
+
+                <li>
+                    <figure>
+                        <img src="images/paris.jpg"
+                             alt="Paris city and Eiffel Tower">
+                        <figcaption>
+                            🇫🇷 Paris – A beautiful view of the Eiffel Tower.
+                        </figcaption>
+                    </figure>
+                </li>
+
+                <li>
+                    <figure>
+                        <img src="images/tokyo.jpg"
+                             alt="Tokyo city skyline">
+                        <figcaption>
+                            🇯🇵 Tokyo – Bright city lights and an exciting atmosphere.
+                        </figcaption>
+                    </figure>
+                </li>
+
+                <li>
+                    <figure>
+                        <img src="images/rome.jpg"
+                             alt="Historic architecture in Rome">
+                        <figcaption>
+                            🇮🇹 Rome – A wonderful city full of history and culture.
+                        </figcaption>
+                    </figure>
+                </li>
+
+                <li>
+                    <figure>
+                        <img src="images/eiffel-tower.jpg"
+                             alt="Eiffel Tower in Paris">
+                        <figcaption>
+                            🗼 Eiffel Tower – A famous landmark in Paris.
+                        </figcaption>
+                    </figure>
+                </li>
+
+                <li>
+                    <figure>
+                        <img src="images/tokyo-tower.jpg"
+                             alt="Tokyo Tower">
+                        <figcaption>
+                            🌆 Tokyo Tower – One of Tokyo's iconic attractions.
+                        </figcaption>
+                    </figure>
+                </li>
+
+                <li>
+                    <figure>
+                        <img src="images/colosseum.jpg"
+                             alt="Colosseum in Rome">
+                        <figcaption>
+                            🏛️ Colosseum – A symbol of ancient Roman history.
+                        </figcaption>
+                    </figure>
+                </li>
+
+            </ul>
+        </section>
+
+        <!-- CONTACT FORM -->
+        <section id="contact">
+            <h2>💌 Contact Us</h2>
+
+            <p>
+                Have questions or want to share your travel stories?
+                We would love to hear from you!
+            </p>
+
+            <form action="#" method="post">
+
+                <div>
+                    <label for="name">Full Name:</label>
+                    <input type="text"
+                           id="name"
+                           name="name"
+                           placeholder="Enter your name"
+                           required>
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="email">Email Address:</label>
+                    <input type="email"
+                           id="email"
+                           name="email"
+                           placeholder="Enter your email"
+                           required>
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="subject">Subject:</label>
+                    <input type="text"
+                           id="subject"
+                           name="subject"
+                           placeholder="Enter message subject"
+                           required>
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="message">Your Message:</label>
+                    <textarea id="message"
+                              name="message"
+                              rows="6"
+                              placeholder="Write your message here..."
+                              required></textarea>
+                </div>
+
+                <br>
+
+                <button type="submit">Send Message</button>
+
+            </form>
+        </section>
+
+        <!-- NEWSLETTER SUBSCRIPTION -->
+        <section id="subscribe">
+            <h2>📩 Join Our Travel Newsletter</h2>
+
+            <p>
+                Stay updated with our latest travel stories,
+                tips, and adventures!
+            </p>
+
+            <form action="#" method="post">
+
+                <div>
+                    <label for="subscriber-email">Email Address:</label>
+                    <input type="email"
+                           id="subscriber-email"
+                           name="subscriber-email"
+                           placeholder="Enter your email address"
+                           required>
+                </div>
+
+                <br>
+
+                <div>
+                    <input type="checkbox"
+                           id="consent"
+                           name="consent"
+                           required>
+
+                    <label for="consent">
+                        I agree to receive travel newsletters and updates.
+                    </label>
+                </div>
+
+                <br>
+
+                <button type="submit">Subscribe</button>
+
+            </form>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div>
+            <h3>Global Adventures Blog 🌍</h3>
+
+            <p>
+                Sharing stories, exploring cultures,
+                and making memories around the world.
+            </p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#cities">Cities</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#subscribe">Subscribe</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Follow Our Adventures</h3>
+
+            <a href="#" aria-label="Facebook">Facebook</a> |
+            <a href="#" aria-label="Twitter">Twitter</a> |
+            <a href="#" aria-label="Instagram">Instagram</a>
+        </div>
+
+        <div>
+            <h3>Contact Information</h3>
+            <p>Email: globaladventures@example.com</p>
+        </div>
+
+        <p>
+            &copy; 2026 Global Adventures Blog.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harbor Light Community Center</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .center-and-space-content {
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav {
+            background-color: #e6f2f5;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #24527A;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            background-color: #e6f2f5;
+            text-align: center;
+            padding: 15px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+
+        <div class="center-and-space-content">
+            <img src="logo.jpg"
+                 alt="Harbor Light Community Center Logo"
+                 width="150">
+        </div>
+
+        <h1>Welcome to Harbor Light Community Center</h1>
+
+        <p>
+            Building a stronger community through education,
+            activities, and meaningful connections.
+        </p>
+
+        <!-- Decorative Banner -->
+        <img src="banner.jpg"
+             alt=""
+             aria-hidden="true"
+             width="100%">
+
+    </header>
+
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Main Navigation">
+        <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#events">Join Our Events</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- About Us -->
+        <section id="about">
+
+            <h2>About Us</h2>
+
+            <p>
+                Harbor Light Community Center is a place where people
+                come together to learn, grow, and build meaningful
+                relationships. We are committed to creating a welcoming
+                environment for everyone in our community.
+            </p>
+
+            <img src="community-center.jpg"
+                 alt="Harbor Light Community Center People"
+                 width="500">
+
+        </section>
+
+        <!-- Our Services -->
+        <section id="services">
+
+            <h2>Our Services</h2>
+
+            <p>
+                We provide various programs and services to support
+                our community, including:
+            </p>
+
+            <ul>
+                <li>Educational Programs</li>
+                <li>Youth Development Activities</li>
+                <li>Community Support Services</li>
+                <li>Health and Wellness Programs</li>
+                <li>Arts and Cultural Activities</li>
+            </ul>
+
+        </section>
+
+        <!-- Join Our Events with Schema.org -->
+        <section id="events"
+                 itemscope
+                 itemtype="http://schema.org/Event">
+
+            <h2>Join Our Events</h2>
+
+            <p itemprop="description">
+                Join us for our Annual Summer Festival!
+                Enjoy exciting activities, entertainment,
+                games, and opportunities to connect with
+                other members of our community.
+            </p>
+
+            <p>
+                <strong itemprop="name">
+                    Annual Summer Festival
+                </strong>
+                <br>
+
+                Date:
+                <time itemprop="startDate"
+                      datetime="2050-06-15">
+                    June 15, 2050
+                </time>
+            </p>
+
+        </section>
+
+        <!-- Contact Us -->
+        <section id="contact">
+
+            <h2>Contact Us</h2>
+
+            <div>
+                <p>
+                    If you have any questions or would like
+                    to learn more about our programs, please
+                    contact us.
+                </p>
+
+                <p>
+                    Email:
+                    <a href="mailto:info@harborlight.com">
+                        info@harborlight.com
+                    </a>
+                </p>
+
+                <p>
+                    Phone:
+                    <a href="tel:+1234567890">
+                        +1 234 567 890
+                    </a>
+                </p>
+
+                <p>
+                    Address: 123 Harbor Street, Community City
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>
+            &copy; 2050 Harbor Light Community Center
+        </p>
+
+    </footer>
+
+</body>
+</html>
