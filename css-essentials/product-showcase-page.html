@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Showcase - AeroStride Pro</title>
+  
+  <!-- Import Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #f59e0b;
+      --bg-body: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .product-card {
+      background-color: var(--card-bg);
+      max-width: 900px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    /* Left Side: Product Gallery */
+    .product-gallery {
+      background-color: #f1f5f9;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .badge-discount {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #ef4444;
+      color: white;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .main-image-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    .main-image {
+      max-width: 100%;
+      max-height: 280px;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 15px rgba(0,0,0,0.15));
+      transition: transform 0.3s ease;
+    }
+
+    .main-image:hover {
+      transform: scale(1.05) rotate(-3deg);
+    }
+
+    .thumbnail-container {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      border: 2px solid transparent;
+      background: white;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .thumb.active, .thumb:hover {
+      border-color: var(--primary);
+    }
+
+    /* Right Side: Product Details */
+    .product-details {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .category {
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .stars {
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .reviews {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .price-container {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .current-price {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .original-price {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* Options (Colors & Sizes) */
+    .option-group {
+      margin-bottom: 20px;
+    }
+
+    .option-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    .size-picker {
+      display: flex;
+      gap: 10px;
+    }
+
+    .size-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .size-btn.active, .size-btn:hover {
+      background: var(--text-main);
+      color: white;
+      border-color: var(--text-main);
+    }
+
+    /* Actions */
+    .actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .btn-cart {
+      flex: 1;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .btn-cart:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn-cart:active {
+      transform: scale(0.98);
+    }
+
+    .btn-wishlist {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.2s;
+    }
+
+    .btn-wishlist:hover {
+      background-color: #f1f5f9;
+      color: #ef4444;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .product-card {
+        grid-template-columns: 1fr;
+      }
+      .product-gallery {
+        padding: 20px;
+      }
+      .product-details {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="product-card">
+    
+    <!-- Bagian Kiri: Galeri Produk -->
+    <div class="product-gallery">
+      <span class="badge-discount">Hemat 25%</span>
+      
+      <div class="main-image-container">
+        <img id="viewImage" class="main-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80" alt="Sepatu Lari AeroStride Pro">
+      </div>
+
+      <div class="thumbnail-container">
+        <div class="thumb active" onclick="changeImage('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80', this)">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=150&auto=format&fit=crop&q=80" alt="Merah">
+        </div>
+        <div class="thumb" onclick="changeImage('https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600&auto=format&fit=crop&q=80', this)">
+          <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=150&auto=format&fit=crop&q=80" alt="Biru">
+        </div>
+        <div class="thumb" onclick="changeImage('https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600&auto=format&fit=crop&q=80', this)">
+          <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=150&auto=format&fit=crop&q=80" alt="Hitam">
+        </div>
+      </div>
+    </div>
+
+    <!-- Bagian Kanan: Detail Produk -->
+    <div class="product-details">
+      <div>
+        <div class="category">Sepatu Lari Kinerja Tinggi</div>
+        <h1 class="title">AeroStride Pro Runner v2</h1>
+        
+        <div class="rating">
+          <span class="stars">★★★★★</span>
+          <span class="reviews">(4.9 dari 128 Ulasan)</span>
+        </div>
+
+        <div class="price-container">
+          <span class="current-price">Rp 1.199.000</span>
+          <span class="original-price">Rp 1.599.000</span>
+        </div>
+
+        <p class="description">
+          Dirancang untuk pelari jarak jauh yang membutuhkan bantalan empuk dan responsif. Menggunakan teknologi rajut *FlyBreathe* untuk sirkulasi udara maksimal.
+        </p>
+
+        <!-- Pemilih Ukuran -->
+        <div class="option-group">
+          <div class="option-title">Pilih Ukuran (EU)</div>
+          <div class="size-picker">
+            <button class="size-btn">40</button>
+            <button class="size-btn active">41</button>
+            <button class="size-btn">42</button>
+            <button class="size-btn">43</button>
+            <button class="size-btn">44</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tombol Aksi -->
+      <div class="actions">
+        <button class="btn-cart">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+          + Keranjang Belanja
+        </button>
+        <button class="btn-wishlist" title="Tambah ke Wishlist">♥</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Fitur Ganti Gambar Produk secara Dinamis
+    function changeImage(imgSrc, element) {
+      document.getElementById('viewImage').src = imgSrc;
+      
+      // Update status thumbnail aktif
+      const thumbs = document.querySelectorAll('.thumb');
+      thumbs.forEach(t => t.classList.remove('active'));
+      element.classList.add('active');
+    }
+
+    // Interactive Size Buttons
+    const sizeBtns = document.querySelectorAll('.size-btn');
+    sizeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        sizeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
