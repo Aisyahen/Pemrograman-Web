@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Adventures Blog - Top 3 Cities in the World</title>
+  
+  <!-- Import Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* 1. CSS CUSTOM PROPERTIES & THEMING */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #f59e0b;
+      --bg-body: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --focus-outline: #facc15;
+      --radius: 16px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    }
+
+    /* 2. BASE & ACCESSIBILITY RESET */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    /* Skip Link (A11y Standard) */
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 10px;
+      background: var(--focus-outline);
+      color: #000;
+      padding: 12px 20px;
+      font-weight: 800;
+      border-radius: 6px;
+      z-index: 1000;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 10px; }
+
+    /* Focus Visible Indicator */
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 4px solid var(--focus-outline) !important;
+      outline-offset: 4px;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* 3. NAVIGATION BAR (FLEXBOX) */
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* 4. HERO SECTION WITH ANIMATION */
+    .hero {
+      text-align: center;
+      padding: 70px 0 40px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 650px;
+      margin: 0 auto 30px;
+    }
+
+    /* 5. CITIES SHOWCASE (CSS GRID LAYOUT) */
+    .cities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .city-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .city-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+    }
+
+    .city-img-wrapper {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .city-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .city-card:hover .city-img {
+      transform: scale(1.08);
+    }
+
+    .city-rank {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+
+    .city-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .city-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+    .city-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+
+    .city-highlights {
+      list-style: none;
+      margin-bottom: 20px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border);
+    }
+
+    .city-highlights li {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .city-highlights li span { color: var(--primary); margin-right: 6px; }
+
+    /* 6. COMPARISON TABLE SECTION */
+    .comparison-section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 40px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .table-container { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background-color: #f1f5f9;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    tr:hover { background-color: #f8fafc; }
+
+    /* 7. INTERACTIVE NEWSLETTER FORM */
+    .newsletter-card {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: var(--radius);
+      padding: 45px;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .newsletter-card h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
+    .newsletter-card p { opacity: 0.9; margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+    .form-inline {
+      display: flex;
+      gap: 12px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-inline input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-submit {
+      background-color: #0f172a;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-submit:hover { background-color: #1e293b; }
+
+    /* 8. FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      background: white;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* KEYFRAME ANIMATIONS */
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+    }
+
+    /* RESPONSIVE DESIGN BREAKPOINTS */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.1rem; }
+      .form-inline { flex-direction: column; }
+      .nav-wrapper { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip to Main Content (A11y) -->
+  <a href="#main-content" class="skip-link">Langsung ke Konten Utama</a>
+
+  <!-- Navigation Header (Flexbox) -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo">GlobalAdventures.</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">Tentang Blog</a></li>
+          <li><a href="#cities">Kota Favorit</a></li>
+          <li><a href="#comparison">Perbandingan</a></li>
+          <li><a href="#newsletter">Berlangganan</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero container" id="about">
+    <span class="hero-badge">Final Capstone Project</span>
+    <h1>My Top 3 Cities in the World</h1>
+    <p>Ulasan mendalam mengenai tiga kota paling menakjubkan di dunia berdasarkan keunikan budaya, efisiensi transportasi, dan kuliner khasnya.</p>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="container" id="main-content" tabIndex="-1">
+    
+    <!-- City Grid (CSS Grid Layout) -->
+    <section class="cities-grid" id="cities">
+      
+      <!-- City 1: Tokyo -->
+      <article class="city-card">
+        <div class="city-img-wrapper">
+          <span class="city-rank">#1 Favorit</span>
+          <img class="city-img" src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=600&auto=format&fit=crop&q=80" alt="Pemandangan Kota Tokyo Malam Hari">
+        </div>
+        <div class="city-body">
+          <div>
+            <h2 class="city-title">Tokyo, Jepang</h2>
+            <p class="city-desc">Perpaduan sempurna antara futurisme canggih dan tradisi kuno. Tokyo menawarkan pengalaman transportasi publik paling efisien dan kuliner berkelas dunia.</p>
+            <ul class="city-highlights">
+              <li><span>✓</span> Destinasi Wajib: Akihabara & Senso-ji</li>
+              <li><span>✓</span> Makanan Khas: Ramen & Sushi Segar</li>
+              <li><span>✓</span> Suasana: Modern, Aman & Teratur</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- City 2: Paris -->
+      <article class="city-card">
+        <div class="city-img-wrapper">
+          <span class="city-rank">#2 Favorit</span>
+          <img class="city-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&auto=format&fit=crop&q=80" alt="Menara Eiffel di Paris">
+        </div>
+        <div class="city-body">
+          <div>
+            <h2 class="city-title">Paris, Prancis</h2>
+            <p class="city-desc">Pusat seni, mode, dan arsitektur klasik dunia. Menawarkan keindahan sungai Seine, museum megah, serta kebudayaan kafe tepi jalan yang romantis.</p>
+            <ul class="city-highlights">
+              <li><span>✓</span> Destinasi Wajib: Menara Eiffel & Louvre</li>
+              <li><span>✓</span> Makanan Khas: Croissant & Pastry</li>
+              <li><span>✓</span> Suasana: Artistik & Romantis</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- City 3: New York -->
+      <article class="city-card">
+        <div class="city-img-wrapper">
+          <span class="city-rank">#3 Favorit</span>
+          <img class="city-img" src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&auto=format&fit=crop&q=80" alt="Gedung Pencakar Langit New York">
+        </div>
+        <div class="city-body">
+          <div>
+            <h2 class="city-title">New York, AS</h2>
+            <p class="city-desc">Kota yang tak pernah tidur dengan energi luar biasa. Pusat pertunjukan panggung Broadway, taman kota ikonik Central Park, serta keragaman budaya global.</p>
+            <ul class="city-highlights">
+              <li><span>✓</span> Destinasi Wajib: Times Square & Central Park</li>
+              <li><span>✓</span> Makanan Khas: NY Style Pizza & Bagel</li>
+              <li><span>✓</span> Suasana: Dinamis & Multikultural</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Comparison Table Section -->
+    <section class="comparison-section" id="comparison">
+      <h2 class="section-title">Ringkasan Perbandingan Kota</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Kota</th>
+              <th>Daya Tarik Utama</th>
+              <th>Estimasi Biaya</th>
+              <th>Sistem Transportasi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Tokyo</strong></td>
+              <td>Teknologi & Kuliner</td>
+              <td>Sedang - Tinggi</td>
+              <td>Kereta Cepat (Shinkansen)</td>
+            </tr>
+            <tr>
+              <td><strong>Paris</strong></td>
+              <td>Seni & Arsitektur Klasik</td>
+              <td>Tinggi</td>
+              <td>Metro & Sepeda Kota</td>
+            </tr>
+            <tr>
+              <td><strong>New York</strong></td>
+              <td>Hiburan & Keanekaragaman</td>
+              <td>Sangat Tinggi</td>
+              <td>Subway 24 Jam</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Interactive Newsletter Form -->
+    <section class="newsletter-card" id="newsletter">
+      <h2>Dapatkan Catatan Perjalanan Terbaru</h2>
+      <p>Berlangganan buletin mingguan untuk menerima rekomendasi destinasi dan panduan wisata hemat secara gratis.</p>
+      <form class="form-inline" onsubmit="alert('Terima kasih telah berlangganan buletin kami!'); return false;">
+        <label for="email-input" class="sr-only" style="position:absolute; width:1px; height:1px; overflow:hidden;">Alamat Email</label>
+        <input type="email" id="email-input" placeholder="Masukkan alamat email Anda..." required aria-required="true">
+        <button type="submit" class="btn-submit">Berlangganan</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Practical Web Design - Final Lab Project (Global Adventures Blog)</p>
+    </div>
+  </footer>
+
+</body>
+</html>
