@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Multi-Column News Portal</title>
+  
+  <!-- Import Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg-body: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header Navigasi */
+    header {
+      background-color: var(--card-bg);
+      padding: 20px 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Layout Multi-Kolom Utama (CSS Grid) */
+    .layout-grid {
+      display: grid;
+      grid-template-columns: 2.5fr 1fr; /* Kolom Konten Utama vs Sidebar */
+      gap: 25px;
+    }
+
+    /* Sub-Grid untuk Kolom Konten Utama (Flexbox / Grid) */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    /* Featured Article Card */
+    .featured-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .featured-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .featured-body {
+      padding: 25px;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #dbeafe;
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .featured-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .meta-info {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+
+    /* Secondary Articles 2-Column Grid */
+    .sub-articles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .article-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s;
+    }
+
+    .article-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .article-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .article-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+
+    /* Sidebar Column */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .widget {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .widget-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .trending-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .trending-item {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .trending-num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      opacity: 0.5;
+    }
+
+    .trending-text h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .trending-text span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE BREAKPOINTS (Media Queries) */
+    @media (max-width: 992px) {
+      .layout-grid {
+        grid-template-columns: 1fr; /* Stack sidebar ke bawah di tablet */
+      }
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+      .sub-articles {
+        grid-template-columns: 1fr; /* Jadi 1 kolom di mobile */
+      }
+      .featured-img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Top Navigation Header -->
+    <header>
+      <div class="logo">TechPulse.</div>
+      <ul class="nav-links">
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Teknologi</a></li>
+        <li><a href="#">Desain Web</a></li>
+        <li><a href="#">Karir</a></li>
+      </ul>
+    </header>
+
+    <!-- Main Multi-Column Grid Layout -->
+    <div class="layout-grid">
+      
+      <!-- Kolom Konten Utama (Left) -->
+      <main class="main-content">
+        
+        <!-- Artikel Utama (Featured) -->
+        <article class="featured-card">
+          <img class="featured-img" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1000&auto=format&fit=crop&q=80" alt="Pemrograman Web">
+          <div class="featured-body">
+            <span class="badge">Eksplorasi Web</span>
+            <h1 class="featured-title">Memahami Arsitektur Multi-Kolom Responsif dengan CSS Modern</h1>
+            <div class="meta-info">Oleh <strong>Ahmad Fauzi</strong> • 10 Menit Membaca • 24 Oktober 2026</div>
+            <p>Penerapan kombinasi antara Flexbox dan CSS Grid memberikan fleksibilitas tanpa batas dalam merancang tata letak halaman yang adaptif terhadap berbagai ukuran layar desktop maupun seluler.</p>
+          </div>
+        </article>
+
+        <!-- Artikel Sekunder (2 Kolom) -->
+        <div class="sub-articles">
+          
+          <article class="article-card">
+            <div>
+              <span class="badge" style="background:#fef3c7; color:#d97706;">Desain UI</span>
+              <h3>Prinsip Hierarki Visual pada Layout Kompleks</h3>
+              <p>Bagaimana mengarahkan pandangan pembaca agar fokus pada poin penting informasi tanpa membuat layar terasa penuh.</p>
+            </div>
+            <div class="meta-info">2 jam yang lalu</div>
+          </article>
+
+          <article class="article-card">
+            <div>
+              <span class="badge" style="background:#fce7f3; color:#db2777;">Aksesibilitas</span>
+              <h3>Optimasi Breakpoint untuk Perangkat Mobile</h3>
+              <p>Strategi menyusun ulang prioritas kolom saat tampilan web diakses dari layar dengan resolusi kecil.</p>
+            </div>
+            <div class="meta-info">5 jam yang lalu</div>
+          </article>
+
+        </div>
+
+      </main>
+
+      <!-- Sidebar (Right Column) -->
+      <aside class="sidebar">
+        
+        <div class="widget">
+          <h3 class="widget-title">Artikel Populer</h3>
+          <ul class="trending-list">
+            <li class="trending-item">
+              <span class="trending-num">01</span>
+              <div class="trending-text">
+                <h4>Panduan SASS untuk Pemula</h4>
+                <span>12.4k Pembaca</span>
+              </div>
+            </li>
+            <li class="trending-item">
+              <span class="trending-num">02</span>
+              <div class="trending-text">
+                <h4>Optimasi CSS Grid Layout</h4>
+                <span>8.9k Pembaca</span>
+              </div>
+            </li>
+            <li class="trending-item">
+              <span class="trending-num">03</span>
+              <div class="trending-text">
+                <h4>A11y: Web untuk Semua</h4>
+                <span>6.2k Pembaca</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="widget" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white;">
+          <h3 class="widget-title" style="border-color: rgba(255,255,255,0.2);">Newsletter</h3>
+          <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 15px;">Dapatkan artikel web design terbaru langsung di email Anda setiap minggu.</p>
+          <input type="email" placeholder="Email Anda..." style="width: 100%; padding: 10px; border-radius: 6px; border: none; margin-bottom: 10px;">
+          <button style="width: 100%; padding: 10px; background: #0f172a; color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Berlangganan</button>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <footer>
+      <p>&copy; 2026 TechPulse Portal - Tugas 4 Responsive Multi-Column Layout</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
