@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Accessibility (A11y) Lab Project</title>
+  
+  <!-- Import Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Rasio Kontras Tinggi (Memenuhi Standar WCAG AAA minimal 7:1) */
+      --bg-body: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #ffffff;
+      --text-muted: #cbd5e1;
+      --primary-accent: #38bdf8;
+      --focus-outline: #facc15;
+      --border-color: #475569;
+      --font-scale: 1rem;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-size: var(--font-scale);
+      line-height: 1.7;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* 1. SKIP LINK FOR KEYBOARD NAVIGATION */
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 10px;
+      background: var(--focus-outline);
+      color: #000000;
+      padding: 12px 20px;
+      font-weight: 800;
+      border-radius: 6px;
+      z-index: 1000;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+      outline: 4px solid #ffffff;
+    }
+
+    /* 2. CLEAR KEYBOARD FOCUS INDICATOR (A11Y Standard) */
+    a:focus-visible, 
+    button:focus-visible, 
+    input:focus-visible, 
+    textarea:focus-visible {
+      outline: 4px solid var(--focus-outline) !important;
+      outline-offset: 4px !important;
+      border-radius: 4px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+    }
+
+    /* 3. ACCESSIBILITY CONTROLS TOOLBAR */
+    .a11y-toolbar {
+      background: #000000;
+      border: 2px solid var(--primary-accent);
+      padding: 16px 24px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .a11y-toolbar span {
+      font-weight: 700;
+      color: var(--primary-accent);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-a11y {
+      background: #334155;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      padding: 8px 16px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn-a11y:hover {
+      background: var(--primary-accent);
+      color: #000000;
+    }
+
+    /* 4. ACCESSIBLE CARD COMPONENT */
+    .a11y-card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 35px;
+      border: 2px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      color: var(--primary-accent);
+    }
+
+    .intro-text {
+      color: var(--text-muted);
+      margin-bottom: 25px;
+      font-size: 1.05rem;
+    }
+
+    .checklist {
+      list-style: none;
+      margin: 25px 0;
+    }
+
+    .checklist li {
+      position: relative;
+      padding-left: 32px;
+      margin-bottom: 14px;
+      color: var(--text-main);
+      font-size: 1rem;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--primary-accent);
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    /* 5. ACCESSIBLE FORM DESIGN */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .required-star {
+      color: #f87171;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: #0f172a;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .btn-submit {
+      background-color: var(--primary-accent);
+      color: #000000;
+      border: none;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 800;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s;
+    }
+
+    .btn-submit:hover {
+      background-color: #7dd3fc;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip to Main Content (Penting untuk pengguna Keyboard / Screen Reader) -->
+  <a href="#main-content" class="skip-link">Langsung ke Konten Utama</a>
+
+  <div class="container">
+    
+    <!-- Accessibility Control Bar -->
+    <div class="a11y-toolbar" role="region" aria-label="Pengaturan Aksesibilitas">
+      <span><strong id="a11y-label">Alat Aksesibilitas (A11y)</strong></span>
+      <div class="btn-group">
+        <button class="btn-a11y" onclick="changeFontSize(1)" aria-label="Perbesar Ukuran Teks">Teks A+</button>
+        <button class="btn-a11y" onclick="changeFontSize(-1)" aria-label="Perkecil Ukuran Teks">Teks A-</button>
+        <button class="btn-a11y" onclick="resetFontSize()" aria-label="Reset Ukuran Teks">Reset</button>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="a11y-card" tabIndex="-1">
+      <header>
+        <h1>Web Accessibility (A11y) with CSS</h1>
+      </header>
+
+      <p class="intro-text">
+        Proyek ini dirancang secara khusus untuk memenuhi pedoman <strong>WCAG 2.1 (Web Content Accessibility Guidelines)</strong>. Setiap elemen visual dan interaktif telah disesuaikan agar ramah bagi pengguna pembaca layar (*screen reader*) maupun pembaca yang bergantung pada navigasi *keyboard*.
+      </p>
+
+      <h2 style="font-size: 1.3rem; margin-bottom: 15px; color: var(--primary-accent);">Standar Aksesibilitas yang Diterapkan:</h2>
+      <ul class="checklist">
+        <li><strong>High Contrast Ratio:</strong> Teks dan latar belakang memenuhi standar rasio kontras AAA (&gt; 7:1).</li>
+        <li><strong>Focus Visible:</strong> Indikator fokus warna kuning terang yang sangat jelas saat menggunakan tombol <code>Tab</code>.</li>
+        <li><strong>Semantic HTML & ARIA:</strong> Penggunaan tag HTML5 (`main`, `header`, `label`) dan atribut ARIA yang tepat.</li>
+        <li><strong>Screen Reader Friendly:</strong> Menyediakan tautan *Skip Link* untuk melompati navigasi.</li>
+      </ul>
+
+      <!-- Accessible Form Example -->
+      <section style="margin-top: 30px; padding-top: 25px; border-top: 2px solid var(--border-color);">
+        <h2 style="font-size: 1.3rem; margin-bottom: 20px;">Formulir Umpan Balik Aksesibel</h2>
+        
+        <form onsubmit="alert('Formulir berhasil dikirim secara aksesibel!'); return false;">
+          <div class="form-group">
+            <label for="username">Nama Lengkap <span class="required-star" aria-hidden="true">*</span></label>
+            <input type="text" id="username" name="username" required aria-required="true" placeholder="Masukkan nama Anda">
+          </div>
+
+          <div class="form-group">
+            <label for="feedback">Pesan Feedback <span class="required-star" aria-hidden="true">*</span></label>
+            <textarea id="feedback" name="feedback" rows="4" required aria-required="true" placeholder="Tuliskan umpan balik Anda di sini..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" aria-label="Kirim Formulir Umpan Balik">Kirim Umpan Balik</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Practical Web Design - Tugas 9 Web Accessibility with CSS</p>
+    </footer>
+
+  </div>
+
+  <!-- JavaScript Interaktif untuk Mengubah Ukuran Teks (Aksesibilitas) -->
+  <script>
+    let currentScale = 1;
+
+    function changeFontSize(delta) {
+      currentScale += delta * 0.1;
+      if (currentScale < 0.8) currentScale = 0.8;
+      if (currentScale > 1.4) currentScale = 1.4;
+      document.documentElement.style.setProperty('--font-scale', currentScale + 'rem');
+    }
+
+    function resetFontSize() {
+      currentScale = 1;
+      document.documentElement.style.setProperty('--font-scale', '1rem');
+    }
+  </script>
+
+</body>
+</html>
