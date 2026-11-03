@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap 5 Responsive Webpage</title>
+  
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    /* Custom Styling tambahan untuk mempercantik Bootstrap */
+    .hero-section {
+      background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+      color: white;
+      padding: 80px 0;
+      border-radius: 0 0 30px 30px;
+    }
+    .card-custom {
+      border: none;
+      border-radius: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      background-color: #e7f1ff;
+      color: #0d6efd;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- 1. RESPONSIVE NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#"><i class="bi bi-bootstrap-fill text-primary me-2"></i>BootStudio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto me-3">
+          <li class="nav-item"><a class="nav-link active" href="#beranda">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#fitur">Fitur Utama</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        </ul>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">
+          <i class="bi bi-envelope me-1"></i> Hubungi Kami
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 2. HERO SECTION -->
+  <section class="hero-section text-center mb-5" id="beranda">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <span class="badge bg-white text-primary fw-bold px-3 py-2 rounded-pill mb-3">Bootstrap 5 Framework</span>
+          <h1 class="display-4 fw-bold mb-3">Membangun Web Responsif Cepat dan Elegan</h1>
+          <p class="lead mb-4 opacity-75">Manfaatkan sistem grid 12 kolom dan komponen bawaan Bootstrap 5 untuk mempercepat pembuatan antarmuka modern yang adaptif.</p>
+          <div class="d-flex justify-content-center gap-3">
+            <a href="#fitur" class="btn btn-light btn-lg text-primary fw-bold px-4">Eksplorasi Fitur</a>
+            <button class="btn btn-outline-light btn-lg px-4" data-bs-toggle="modal" data-bs-target="#contactModal">Mulai Kontak</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FEATURE CARDS GRID -->
+  <section class="container my-5" id="fitur">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Keunggulan Bootstrap 5</h2>
+      <p class="text-muted">Komponen yang dirancang untuk mempercepat alur kerja pengembangan web.</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-md-4">
+        <div class="card card-custom h-100 p-4 shadow-sm">
+          <div class="card-body">
+            <div class="icon-box">
+              <i class="bi bi-grid-3x3-gap-fill"></i>
+            </div>
+            <h5 class="card-title fw-bold mb-3">Grid System Responsif</h5>
+            <p class="card-text text-muted">Tata letak 12 kolom yang fleksibel dan mudah disesuaikan untuk layar smartphone, tablet, hingga desktop.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="card card-custom h-100 p-4 shadow-sm">
+          <div class="card-body">
+            <div class="icon-box">
+              <i class="bi bi-palette-fill"></i>
+            </div>
+            <h5 class="card-title fw-bold mb-3">Kustomisasi Kelas Utility</h5>
+            <p class="card-text text-muted">Ratusan kelas utilitas bawaan untuk mengatur margin, padding, warna, dan flexbox tanpa perlu menulis CSS manual.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4">
+        <div class="card card-custom h-100 p-4 shadow-sm">
+          <div class="card-body">
+            <div class="icon-box">
+              <i class="bi bi-lightning-charge-fill"></i>
+            </div>
+            <h5 class="card-title fw-bold mb-3">Komponen Interaktif</h5>
+            <p class="card-text text-muted">Dilengkapi JavaScript bawaan untuk mendukung modal, accordion, dropdown, dan navbar tanpa library tambahan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ACCORDION (FAQ SECTION) -->
+  <section class="container my-5 py-4" id="faq">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-4">
+          <h2 class="fw-bold">Pertanyaan Sering Diajukan</h2>
+        </div>
+
+        <div class="accordion shadow-sm rounded-4 overflow-hidden" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                Apakah Bootstrap 5 membutuhkan jQuery?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body text-muted">
+                Tidak. Mulai dari versi Bootstrap 5, ketergantungan pada jQuery telah sepenuhnya dihapus dan digantikan dengan Vanilla JavaScript yang jauh lebih ringan dan cepat.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Bagaimana cara mengintegrasikan Bootstrap 5 ke proyek?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body text-muted">
+                Anda dapat menghubungkannya secara praktis melalui CDN (seperti pada draf ini) atau memasangnya via package manager seperti NPM/Yarn untuk dikustomisasi menggunakan SASS.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. INTERACTIVE MODAL -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title fw-bold" id="contactModalLabel"><i class="bi bi-envelope-fill me-2"></i>Kirim Pesan</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form>
+            <div class="mb-3">
+              <label for="nameInput" class="form-label fw-bold">Nama Lengkap</label>
+              <input type="text" class="form-control" id="nameInput" placeholder="Masukkan nama Anda">
+            </div>
+            <div class="mb-3">
+              <label for="emailInput" class="form-label fw-bold">Alamat Email</label>
+              <input type="email" class="form-control" id="emailInput" placeholder="nama@email.com">
+            </div>
+            <div class="mb-3">
+              <label for="messageInput" class="form-label fw-bold">Pesan</label>
+              <textarea class="form-control" id="messageInput" rows="3" placeholder="Tuliskan pesan Anda..."></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-primary px-4">Kirim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-0 text-muted">&copy; 2026 Practical Web Design - Tugas 7 Bootstrap 5 Project</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
