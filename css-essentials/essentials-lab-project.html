@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sass Essentials Lab Project</title>
+  
+  <!-- CSS Hasil Kompilasi dari style.scss -->
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* In-page Compiled CSS Fallback jika belum di-compile lewat Sass compiler CLI/VS Code Live Sass Extension */
+    :root {
+      --primary: #6366f1;
+      --secondary: #06b6d4;
+    }
+    body { font-family: 'Segoe UI', sans-serif; background-color: #0f172a; color: #f8fafc; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+    .sass-card { background: #1e293b; border-radius: 16px; padding: 32px; max-width: 700px; width: 100%; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+    .sass-card__header { text-align: center; margin-bottom: 24px; }
+    .badge { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 12px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
+    .feature-item { background: #26334d; padding: 16px; border-radius: 8px; border-left: 4px solid #06b6d4; }
+    .btn-sass { background: linear-gradient(135deg, #6366f1, #06b6d4); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .btn-sass:hover { transform: translateY(-2px); filter: brightness(1.1); }
+  </style>
+</head>
+<body>
+
+  <div class="sass-card">
+    <header class="sass-card__header">
+      <span class="badge">Sass / SCSS Workflow</span>
+      <h1>Dasar-Dasar Preprocessor Sass</h1>
+    </header>
+
+    <div class="sass-card__body">
+      <p>Proyek ini mendemonstrasikan efisiensi penulisan CSS menggunakan Sass/SCSS. Struktur sintaksis lebih bersih, modular, dan dapat dikelola dengan mudah pada skala besar.</p>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h4>1. Variables</h4>
+          <span>Menyimpan nilai warna, font, dan ukuran secara terpusat.</span>
+        </div>
+        <div class="feature-item">
+          <h4>2. Nesting</h4>
+          <span>Menyusun hirarki selektor secara rapi ala BEM (Block Element Modifier).</span>
+        </div>
+        <div class="feature-item">
+          <h4>3. Mixins</h4>
+          <span>Fungsi reutilisasi kode untuk tata letak dan bayangan.</span>
+        </div>
+        <div class="feature-item">
+          <h4>4. Color Operations</h4>
+          <span>Manipulasi tingkat kecerahan dan transparansi warna secara otomatis.</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="sass-card__footer">
+      <button class="btn-sass">Pelajari Dokumentasi Sass</button>
+    </footer>
+  </div>
+
+</body>
+</html>
